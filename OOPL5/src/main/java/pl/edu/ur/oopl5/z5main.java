@@ -9,13 +9,15 @@ import java.util.Scanner;
 
 /**
  *
- * @author cjay
+ * @author Adrian Hrycaj
  */
 public class z5main {
     public static void main(String[] args) {
-        int c,j;
+        int c,i=0,j;
+        z5firma firma = new z5firma();
         Scanner scanner = new Scanner(System.in);
         do{
+            String[][] x = firma.dane;
             System.out.println("---------------------------------"); 
             System.out.println("MENU");
             System.out.println("1. Wprowadź pracowników");
@@ -23,23 +25,18 @@ public class z5main {
             System.out.println("0. Wyjdź");
             System.out.print("Co chcesz zrobić?: ");
             c=scanner.nextInt();
-            z5firma ilu;
-            
 
             switch (c) {
-                case 1:
-                    System.out.print("Ilu pracowników chcesz wprowadzić?: ");
-                    j=scanner.nextInt();
-                    ilu = new z5firma(j);
-                    ilu.dodajPracownika();
-                    
+                case 1:                    
+                    firma.dodajPracownika(i, x);
+                    if(i<100){
+                        i++;
+                    }
                 break;
 
                 case 2:
-                    System.out.print("Ilu pracowników chcesz wyświetlić?: ");
-                    j=scanner.nextInt();
-                    ilu = new z5firma(j);
-                    ilu.wyswietlPracownikow();
+                    
+                    firma.wyswietlPracownikow(i, x);
                 break;
 
                 case 0:

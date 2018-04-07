@@ -9,20 +9,18 @@ import java.util.Scanner;
 
 /**
  *
- * @author cjay
+ * @author Adrian Hrycaj
  */
 public class z5firma {
 
-    public z5firma(int j) {
-        this.j = j;
-    }
-    private int j;
     private String wiekstring;
     public String[][] dane = new String[100][4];
     Scanner scanner = new Scanner(System.in);
+
     
-    void dodajPracownika() {
-        for (int i = 0; i < j; i++) {
+    
+    String[][] dodajPracownika(int i, String[][] dane) {
+        if(i<100){
             z5pracownik pracownik = new z5pracownik();
             System.out.println("---------------------------------"); 
             System.out.println("Podaj dane pracownika nr. " + (i+1));                    
@@ -39,17 +37,30 @@ public class z5firma {
             System.out.print("Stanowisko: ");
             pracownik.stanowisko=scanner.next();
             dane[i][3]=pracownik.stanowisko;
+            i++;
         }
+        else{
+            System.out.println("Lista pracowników jest pełna");
+        }
+        return dane;
     }
+
     
-    void wyswietlPracownikow() {
-        for (int i = 0; i < j; i++) {
-            System.out.println("---------------------------------"); 
-            System.out.println("Pracownik nr. " + (i+1));                    
-            System.out.println("Imię: " + dane[i][0]);
-            System.out.println("Nazwisko: " + dane[i][1]);
-            System.out.println("Wiek: " + dane[i][2]);
-            System.out.println("Stanowisko: " + dane[i][3]);
+    
+    void wyswietlPracownikow(int i, String[][] dane) {
+        if(i>0){
+            for (int j = 0; j < i; j++) {
+                System.out.println("---------------------------------"); 
+                System.out.println("Pracownik nr. " + (j+1));                    
+                System.out.println("Imię: " + dane[j][0]);
+                System.out.println("Nazwisko: " + dane[j][1]);
+                System.out.println("Wiek: " + dane[j][2]);
+                System.out.println("Stanowisko: " + dane[j][3]);
+                
+            }
+        }
+        else{
+            System.out.println("Brak pracowników do wyświetlenia");
         }
     }
 }

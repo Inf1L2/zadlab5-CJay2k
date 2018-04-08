@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class z5main {
     public static void main(String[] args) {
-        int c,i=0,j;
+        int c,i=0;
         z5firma firma = new z5firma();
         Scanner scanner = new Scanner(System.in);
         do{
